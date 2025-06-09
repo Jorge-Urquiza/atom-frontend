@@ -25,7 +25,7 @@ import { ConfirmationService } from 'primeng/api';
     CheckboxModule,
     DynamicDialogModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
   ],
   providers: [
     DialogService,

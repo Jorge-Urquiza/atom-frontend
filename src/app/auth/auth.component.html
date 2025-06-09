@@ -1,1 +1,30 @@
-<p>AUTH works!</p>
+<p-confirmDialog></p-confirmDialog>
+<div class="flex align-items-center justify-content-center min-h-screen px-3">
+  <div class="surface-card p-4 shadow-2 border-round w-full sm:w-30rem">
+    <h2 class="text-center mb-4">Iniciar Sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="field mb-3">
+        <label for="email">Correo electrónico*</label>
+        <input
+          id="email"
+          type="email"
+          pInputText
+          formControlName="email"
+          class="w-full"
+          [ngClass]="{'p-invalid': email?.invalid && email?.touched}"
+        />
+        <small *ngIf="email?.invalid && email?.touched" class="p-error">
+          Correo inválido
+        </small>
+      </div>
+      <button
+        pButton
+        type="submit"
+        label="Ingresar"
+        class="w-full"
+        [loading]="loading"
+        [disabled]="loginForm.invalid || loading"
+      ></button>
+    </form>
+  </div>
+</div>
