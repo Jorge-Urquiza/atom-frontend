@@ -1,1 +1,16 @@
-<p>task-create works!</p>
+<form [formGroup]="createFormTask" (ngSubmit)="onSubmit()" class="p-fluid">
+  <div class="field">
+    <label for="title">Título*</label>
+    <input id="title" type="text" pInputText formControlName="title" />
+  </div>
+
+  <div class="field">
+    <label for="description">Descripción*</label>
+    <input id="title" type="text" pInputText formControlName="description" />
+  </div>
+
+  <div class="flex justify-content-end gap-2 mt-4">
+    <button pButton type="button" label="Cancelar" class="p-button-text" (click)="onCancel()"></button>
+    <button pButton type="submit" label="Guardar" [disabled]="createFormTask.invalid || loading" [loading]="loading"></button>
+  </div>
+</form>

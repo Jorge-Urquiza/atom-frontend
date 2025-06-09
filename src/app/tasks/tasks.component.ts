@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { SessionService } from '../core/services/session.service';
 import { Router } from '@angular/router';
+import { TaskListComponent } from './components/task-list/task-list.component';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss',
 })
-export class TasksComponent implements OnInit{
-   userMenuItems = [
+export class TasksComponent implements OnInit {
+  @ViewChild(TaskListComponent) taskListComponent!: TaskListComponent;
+  userMenuItems = [
     {
       label: 'Cerrar sesión',
       icon: 'pi pi-sign-out',
@@ -18,12 +20,11 @@ export class TasksComponent implements OnInit{
     },
   ];
   public currentUserEmail!: string;
-  private ref: DynamicDialogRef | undefined;
   constructor(
     private router: Router,
     private dialogService: DialogService,
     private sessionService: SessionService,
-    private confirmationService: ConfirmationService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
@@ -48,34 +49,18 @@ export class TasksComponent implements OnInit{
       },
       reject: () => {},
     });
-
   }
 
-
-   public openCreateEmployeeModal() {
-    this.ref = this.dialogService.open(TaskCreateComponent, {
-      header: 'Crear trabajador(a)',
-      width: '50vw',
+  public createTask() {
+    const taskReference = this.dialogService.open(TaskCreateComponent, {
+      header: 'Crear nueva tarea',
       modal: true,
-      breakpoints: {
-        '960px': '75vw',
-        '640px': '90vw',
-      },
     });
 
-    this.ref.onClose.subscribe((some) => {
-      // if (some) {
-      //   this.resetFilters();
-      //   this.params = this.getParamsForFilters();
-      //   this.loadData();
-      //   this.messageService.add({
-      //     severity: 'success',
-      //     summary: 'Éxito!',
-      //     detail: 'Trabajador(a) creado exitosamente!',
-      //   });
-      // } else {
-      // }
+    taskReference.onClose.subscribe((created) => {
+      if (created && this.taskListComponent) {
+        this.taskListComponent.loadTasks();
+      }
     });
   }
-
 }

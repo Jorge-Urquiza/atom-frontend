@@ -7,7 +7,7 @@ import { TaskCreateComponent } from './components/task-create/task-create.compon
 import { TaskEditComponent } from './components/task-edit/task-edit.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { PrimengCustomModule } from '../shared/primeng/primeng-custom.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     TasksRoutingModule,
     PrimengCustomModule
   ]
