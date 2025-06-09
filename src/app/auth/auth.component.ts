@@ -10,8 +10,7 @@ import { SessionService } from '../core/services/session.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss',
-  // providers: [DialogService, MessageService, ConfirmationService]
+  styleUrl: './auth.component.scss'
 })
 export class AuthComponent {
   public loginForm!: FormGroup;
@@ -48,7 +47,7 @@ export class AuthComponent {
     this.authService.login(payload).subscribe({
       next: (res) => {
         const token: string = res.data.token;
-        this.storeTokenAndNavigate(token);
+        this.storeTokenAndNavigate(token, payload);
       },
       error: (error) => {
         this.loading = false;
@@ -68,11 +67,16 @@ export class AuthComponent {
 
   private confirmUserCreation(email: string): void {
     this.confirmationService.confirm({
-      message: `El correo "${email}" no se encuentra registrado. ¿Deseas crear una cuenta?`,
+      message: `El usuario no se encuentra registrado. ¿Deseas crear una cuenta?`,
       header: 'Usuario no encontrado',
       icon: 'pi pi-user-plus',
-      acceptLabel: 'Sí',
+      acceptLabel: 'Si',
       rejectLabel: 'No',
+      acceptButtonStyleClass: 'p-button-sucess p-button-text',
+      rejectButtonStyleClass: 'p-button-danger p-button-text',
+      acceptIcon: 'pi pi-check mr-2',
+      rejectIcon: 'pi pi-times mr-2',
+      defaultFocus: 'none',
       accept: () => {
         this.registerUserAndLogin(email);
       },
@@ -97,8 +101,9 @@ export class AuthComponent {
     });
   }
 
-  private storeTokenAndNavigate(token: string): void {
+  private storeTokenAndNavigate(token: string, payload: LoginRequest): void {
     this.sessionService.setToken(token);
+    this.sessionService.setEmail(payload.email);
     this.router.navigate(['/tasks']);
     this.loading = false;
   }

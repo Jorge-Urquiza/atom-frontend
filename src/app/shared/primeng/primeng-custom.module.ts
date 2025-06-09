@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // PrimeNG Modules
+import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+import { MenuModule } from 'primeng/menu';
 
 // PrimeNG Services
 import { DialogService } from 'primeng/dynamicdialog';
@@ -25,6 +28,9 @@ import { ConfirmationService } from 'primeng/api';
     CheckboxModule,
     DynamicDialogModule,
     ToastModule,
+    TagModule,
+    TableModule,
+    MenuModule,
     ConfirmDialogModule,
   ],
   providers: [

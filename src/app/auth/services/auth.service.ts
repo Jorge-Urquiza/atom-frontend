@@ -13,7 +13,10 @@ export class AuthService {
     'http://localhost:5001/atom-challenge-6e114/us-central1/api/auth';
   constructor(private http: HttpClient) {}
 
-  login(loginRequest: LoginRequest): Observable<ApiResponse<LoginData>> {
-    return this.http.post<ApiResponse<LoginData>>(`${this.apiUrl}/login`, loginRequest);
+  public login(loginRequest: LoginRequest): Observable<ApiResponse<LoginData>> {
+    return this.http.post<ApiResponse<LoginData>>(
+      `${this.apiUrl}/login`,
+      loginRequest
+    );
   }
 }
