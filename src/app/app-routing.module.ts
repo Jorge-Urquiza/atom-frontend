@@ -4,7 +4,7 @@ import { guestGuard } from './core/guards/guest.guard';
 import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // inicio
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     canActivate: [guestGuard],
