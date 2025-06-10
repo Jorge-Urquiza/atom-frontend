@@ -1,27 +1,40 @@
-# AtomFrontend
+# Atom Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Una aplicación de tareas minimalista desarrollada en **Angular 17**, con autenticación por correo, gestión de tareas y deploys en GitHub Pages.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Características principales
 
-## Code scaffolding
+- **Login por correo**: Registro y autenticación con confirmación dinámica.  
+- **Listado de tareas**: Muestra solo las tareas pendientes, ordenadas de más recientes a más antiguas.  
+- **CRUD de tareas**: crear, editar, eliminar y marcar como completadas con confirmaciones antes de cada acción.  
+- **Responsive**: Diseño responsive con PrimeNG y PrimeFlex.
+- **CI/CD**: pipeline con GitHub Actions que construye en modo producción y despliega automáticamente en GitHub Pages.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Tecnologías
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular 17**  
+- **TypeScript**  
+- **PrimeNG & PrimeFlex** (componentes UI y utilidades CSS)  
+- **Firebase Firestore** (backend serverless)  
+- **GitHub Actions** + [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación y run
 
-## Running end-to-end tests
+   ```bash
+   git clone https://github.com/Jorge-Urquiza/atom-frontend.git
+   cd atom-frontend
+   npm install
+   ng serve
+   ```
+## Aplicación desplegada:
+**LINK** : [https://jorge-urquiza.github.io/atom-frontend
+](https://jorge-urquiza.github.io/atom-frontend
+)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
