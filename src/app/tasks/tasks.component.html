@@ -1,11 +1,12 @@
 <p-confirmDialog key="deleteConfirmationDialog" />
+<p-toast></p-toast>
 <div class="flex flex-wrap justify-content-between align-items-center gap-3 px-4 py-2 border-bottom surface-100">
   <span class="text-sm text-primary font-medium flex align-items-center gap-2">
     <i class="pi pi-user"></i> {{ currentUserEmail }}
   </span>
   <div class="flex align-items-center gap-2">
-    <button pButton label="Crear tarea" icon="pi pi-plus" class="p-button-sm p-button-primary"></button>
-    <button pButton icon="pi pi-sign-out" class="p-button-sm p-button-text p-button-danger" label="Cerrar sesión"></button>
+    <button pButton label="Crear tarea" icon="pi pi-plus" class="p-button-sm p-button-primary" (click)="createTask()"></button>
+    <button pButton label="Cerrar sesión" icon="pi pi-sign-out" class="p-button-sm p-button-text p-button-danger" (click)="confirmLogout()"></button>
   </div>
 </div>
 <app-task-list></app-task-list>

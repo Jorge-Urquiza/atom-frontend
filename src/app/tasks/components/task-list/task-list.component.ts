@@ -3,6 +3,8 @@ import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task';
 import { Table } from 'primeng/table';
 import { ConfirmationService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
+import { TaskEditComponent } from '../task-edit/task-edit.component';
 
 @Component({
   selector: 'app-task-list',
@@ -15,6 +17,7 @@ export class TaskListComponent {
 
   constructor(
     private taskService: TaskService,
+    private dialogService: DialogService,
     private confirmationService: ConfirmationService,
   ) {}
 
@@ -33,8 +36,16 @@ export class TaskListComponent {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
-  editTask( task: Task): void {
+  editTask(task: Task): void {
+    const ref = this.dialogService.open(TaskEditComponent, {
+      header: 'Editar tarea',
+      modal: true,
+      data: { task }
+    });
 
+    ref.onClose.subscribe((updated) => {
+      if (updated ) this.loadTasks();
+    });
   }
   confirmDelete(event: Event, task: Task) {
     this.confirmationService.confirm({
@@ -59,6 +70,6 @@ export class TaskListComponent {
   }
 
   toggleTaskStatus(task: Task): void {
-    
+
   }
 }

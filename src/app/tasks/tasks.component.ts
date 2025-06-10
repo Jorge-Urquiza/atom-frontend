@@ -30,7 +30,7 @@ export class TasksComponent implements OnInit {
   ngOnInit(): void {
     this.currentUserEmail = this.sessionService.getEmail();
   }
-  logout(): void {
+  confirmLogout(): void {
     this.confirmationService.confirm({
       key: 'deleteConfirmationDialog',
       message: '¿Estás seguro(a) de que quieres cerrar sesión?',
@@ -44,8 +44,7 @@ export class TasksComponent implements OnInit {
       rejectIcon: 'pi pi-times mr-2',
       defaultFocus: 'none',
       accept: () => {
-        localStorage.clear();
-        this.router.navigate(['/login']);
+        this.logout();
       },
       reject: () => {},
     });
@@ -53,7 +52,7 @@ export class TasksComponent implements OnInit {
 
   public createTask() {
     const taskReference = this.dialogService.open(TaskCreateComponent, {
-      header: 'Crear nueva tarea',
+      header: 'Crear tarea',
       modal: true,
     });
 
@@ -62,5 +61,9 @@ export class TasksComponent implements OnInit {
         this.taskListComponent.loadTasks();
       }
     });
+  }
+  private logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

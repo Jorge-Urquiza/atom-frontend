@@ -24,7 +24,7 @@ export class TaskCreateComponent implements OnInit {
   ngOnInit(): void {
     this.createFormTask = this.formBuilder.group({
       title: ['', Validators.required],
-      description: [''],
+      description: ['', Validators.required],
     });
   }
 
@@ -34,7 +34,7 @@ export class TaskCreateComponent implements OnInit {
       return;
     }
 
-    const task: Task = this.createFormTask.value
+    const task: Task = this.createFormTask.value;
     this.loading = true;
     this.taskService.createTask(task).subscribe({
       next: () => {
@@ -42,6 +42,7 @@ export class TaskCreateComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Tarea creada',
+          detail: `La tarea "${task.title}" fue creada exitosamente.`,
         });
         this.ref.close(true);
       },
