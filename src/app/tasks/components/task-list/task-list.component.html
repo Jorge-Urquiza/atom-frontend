@@ -24,9 +24,9 @@
     <tr>
       <th>#</th>
       <th pSortableColumn="title">Titulo <p-sortIcon field="title"></p-sortIcon></th>
-      <th pSortableColumn="status">Estado</th>
-      <th pSortableColumn="createdAt">Fecha <p-sortIcon field="createdAt"></p-sortIcon></th>
       <th pSortableColumn="description">Descripción <p-sortIcon field="description"></p-sortIcon></th>
+      <th pSortableColumn="status">Estado</th>
+      <th pSortableColumn="createdAt">Fecha creación <p-sortIcon field="createdAt"></p-sortIcon></th>
       <th>Acciones</th>
     </tr>
   </ng-template>
@@ -35,22 +35,22 @@
     <tr>
       <td>{{ i + 1 }}</td>
       <td>{{ task.title }}</td>
-      <td>
-      <div class="flex align-items-center gap-2">
-         <input
-          type="checkbox"
-          class="p-checkbox-box"
-          [checked]="task.completed"
-          (click)="confirmStatusChange($event, task)"
-        />
-        <p-tag
-          [value]="'Pendiente'"
-          [severity]="'danger'">
-        </p-tag>
-      </div>
-    </td>
-      <td>{{ '01/02/2025' }}</td>
       <td>{{ task.description }}</td>
+      <td>
+        <div class="flex align-items-center gap-2">
+          <input
+            type="checkbox"
+            class="p-checkbox-box"
+            [checked]="task.completed"
+            (click)="confirmStatusChange($event, task)"
+          />
+          <p-tag
+            [value]="'Pendiente'"
+            [severity]="'danger'">
+          </p-tag>
+        </div>
+      </td>
+      <td>{{ task.createdAt | date:'dd/MM/yyyy' }}</td>
       <td>
         <button
           pButton
