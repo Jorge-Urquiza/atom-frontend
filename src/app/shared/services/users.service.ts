@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { ApiResponse } from '../models/api-response';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private readonly apiUrl =
-    'http://localhost:5001/atom-challenge-6e114/us-central1/api/users';
+  private readonly apiUrl = `${environment.apiBaseUrl}/users`;
 
   constructor(private http: HttpClient) {}
 

@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 import { LoginRequest } from '../models/login-request';
 import { ApiResponse } from '../../shared/models/api-response';
 import { LoginData } from '../models/login-data';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl =
-    'http://localhost:5001/atom-challenge-6e114/us-central1/api/auth';
+  private readonly apiUrl = `${environment.apiBaseUrl}/auth`;
   constructor(private http: HttpClient) {}
 
   public login(loginRequest: LoginRequest): Observable<ApiResponse<LoginData>> {
