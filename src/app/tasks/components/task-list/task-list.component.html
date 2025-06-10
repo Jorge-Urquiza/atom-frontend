@@ -37,11 +37,12 @@
       <td>{{ task.title }}</td>
       <td>
       <div class="flex align-items-center gap-2">
-        <p-checkbox
-          [binary]="true"
-          [ngModel]="task.completed"
-          (onChange)="toggleTaskStatus(task)">
-        </p-checkbox>
+         <input
+          type="checkbox"
+          class="p-checkbox-box"
+          [checked]="task.completed"
+          (click)="confirmStatusChange($event, task)"
+        />
         <p-tag
           [value]="'Pendiente'"
           [severity]="'danger'">

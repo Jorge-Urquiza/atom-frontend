@@ -27,7 +27,7 @@ export class TasksComponent implements OnInit {
   }
   confirmLogout(): void {
     this.confirmationService.confirm({
-      key: 'deleteConfirmationDialog',
+      key: 'confirmationDialog',
       message: '¿Estás seguro(a) de que quieres cerrar sesión?',
       header: 'Confirmación',
       icon: 'pi pi-exclamation-triangle',
@@ -40,8 +40,7 @@ export class TasksComponent implements OnInit {
       defaultFocus: 'none',
       accept: () => {
         this.logout();
-      },
-      reject: () => {},
+      }
     });
   }
 
