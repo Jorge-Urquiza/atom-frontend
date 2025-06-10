@@ -41,6 +41,7 @@ export class TaskListComponent {
     const ref = this.dialogService.open(TaskEditComponent, {
       header: 'Editar tarea',
       modal: true,
+      width: '500px',
       data: { task },
     });
 
@@ -48,6 +49,7 @@ export class TaskListComponent {
       if (updated) this.loadTasks();
     });
   }
+
   confirmDelete(event: Event, task: Task) {
     this.confirmationService.confirm({
       key: 'deleteConfirmationDialog',

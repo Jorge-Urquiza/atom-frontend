@@ -11,15 +11,10 @@ import { TaskListComponent } from './components/task-list/task-list.component';
   styleUrl: './tasks.component.scss',
 })
 export class TasksComponent implements OnInit {
+
   @ViewChild(TaskListComponent) taskListComponent!: TaskListComponent;
-  userMenuItems = [
-    {
-      label: 'Cerrar sesión',
-      icon: 'pi pi-sign-out',
-      command: () => this.logout(),
-    },
-  ];
   public currentUserEmail!: string;
+
   constructor(
     private router: Router,
     private dialogService: DialogService,
@@ -53,6 +48,7 @@ export class TasksComponent implements OnInit {
   public createTask() {
     const taskReference = this.dialogService.open(TaskCreateComponent, {
       header: 'Crear tarea',
+      width: '500px',
       modal: true,
     });
 

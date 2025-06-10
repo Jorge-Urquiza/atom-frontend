@@ -23,11 +23,14 @@ export class AuthComponent {
     private sessionService: SessionService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
     });
   }
+
   get email() {
     return this.loginForm.get('email');
   }

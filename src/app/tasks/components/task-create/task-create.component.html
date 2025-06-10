@@ -2,11 +2,17 @@
   <div class="field">
     <label for="title">Título*</label>
     <input id="title" type="text" pInputText formControlName="title" />
+    <small *ngIf="title?.invalid && title?.touched" class="p-error">
+      El campo título es requerido
+    </small>
   </div>
 
   <div class="field">
     <label for="description">Descripción*</label>
     <input id="title" type="text" pInputText formControlName="description" />
+    <small *ngIf="description?.invalid && description?.touched" class="p-error">
+       El campo descripción es requerido
+    </small>
   </div>
 
   <div class="flex justify-content-end gap-2 mt-4">

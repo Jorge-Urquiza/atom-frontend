@@ -27,8 +27,13 @@ export class TaskCreateComponent implements OnInit {
       description: ['', Validators.required],
     });
   }
-
-  onSubmit(): void {
+  get title() {
+    return this.createFormTask.get('title');
+  }
+  get description() {
+    return this.createFormTask.get('description');
+  }
+  public onSubmit(): void {
     if (this.createFormTask.invalid) {
       this.createFormTask.markAllAsTouched();
       return;
@@ -55,6 +60,7 @@ export class TaskCreateComponent implements OnInit {
       },
     });
   }
+
   public onCancel(): void {
     this.ref.close(false);
   }
